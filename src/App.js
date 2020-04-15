@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
+import api from "./services/api";
+
+export default function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getDataApi() {
+      try {
+        const result = await api.get(
+          "https://brasil.io/api/dataset/covid19/caso/data?is_last=True&state=CE"
+        );
+
+        setData(result.data.results);
+      } catch (e) {
+        alert(e.response.message);
+      }
+    }
+
+    getDataApi();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='box-container'>
+        {data &&
+          data.map((d) => (
+            <div key={d.city_ibge_code} className='box'>
+              <p>
+                Cidade: <span>{d.city}</span>
+              </p>
+              <p>Confirmados: {d.confirmed}</p>
+              <p>Mortes: {d.deaths}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
-
-export default App;

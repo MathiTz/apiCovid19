@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.box-container {
+  border: 1px solid tomato;
+  border-radius: 5px;
+  margin: 15px auto;
+  padding: 10px 0;
+  width: 1200px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.box {
+  text-align: left;
+  border: 1px solid #282c34;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  padding: 10px 15px;
+  margin: 10px auto;
+}
+
+.box p span {
+  font-size: 14px;
+}
