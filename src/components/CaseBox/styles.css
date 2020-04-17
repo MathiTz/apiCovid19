@@ -1,0 +1,25 @@
+.case-box {
+  background: #f0f0f5;
+  box-shadow: 2px 3px 2px rgba(10, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 31%;
+  padding: 16px;
+  margin: 0 auto 16px;
+  transition: all .2s;
+}
+
+.case-box:hover{
+  background: #e5e5e5;
+  transform: scale(1.2) ;
+}
+
+.box-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-city{
+  font-size: 22px;
+  font-weight: bold;
+}
